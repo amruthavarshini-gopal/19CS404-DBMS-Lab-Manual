@@ -65,30 +65,65 @@ The Central Library wants to manage book lending and cultural events.
 
 ### ER Diagram:
 *Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
+<img width="904" height="386" alt="Screenshot 2025-09-22 132453" src="https://github.com/user-attachments/assets/ebb6fb79-5638-4e2d-8bcf-037614b534e0" />
+
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+|     Entity       |                  Attributes (PK, FK)                             |                            Notes                                  |
+|------------------|------------------------------------------------------------------|-------------------------------------------------------------------|
+|Customer          |Customer ID(PK),Customer Phone No.,Customer Email,Customer Name   |Stores details of people who register or participate in events.    |
+|Event Registration|Registration ID(PK),Customer ID(FK),Event ID(FK),Registration Date|Captures customer registrations for events                         |
+|Event             |Event ID(PK),Event Name,Event Date,Event Type                     |Represents different events organized (seminars, workshops, etc.). |
+|Speaker           |Speaker ID(PK),Speaker Name,Expertise,Event ID(FK)                |Stores details of speakers                                         |
+|Loan              |Loan ID(PK),Customer ID(FK),Loan Date,Return Date,Fine Amount     |Records borrowed items                                             |
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
+|Relationship|Cardinality|             Participation                     |                                Notes                                            |
+|------------|-----------|-----------------------------------------------|---------------------------------------------------------------------------------|
+|Registers   |1:M        |Total for Customer,Total for Event Registration|A customer can register for many events,and each registration belong to customer.|
+|Is for      |M:1        |Total for Event Registration,Total for Event   |Each registration has one event,but an event has many registrations.             |
+|Takes       |1:M        |Total for Loan, Partial for Customer           |A customer may take multiple loans, each loan belongs to exactly one customer.   |
+|Has         |M:M        |Total for Event,Total for Speaker              |An event can have many speakers, and a speaker can be invited to many events.    |
 ### Assumptions
-- 
-- 
-- 
+1)Customer
+
+Each customer has a unique Customer ID.
+
+A customer can register for multiple events but must register separately for each event.
+
+A customer may or may not take loans.
+
+2)Event Registration
+
+Acts as a bridge entity between Customer and Event (resolving many-to-many).
+
+A registration must belong to one customer and one event.
+
+Registration ID is unique for each record.
+
+3)Event
+
+Each event has a unique Event ID.
+
+An event can have multiple customers registered.
+
+An event can have multiple speakers, and each speaker can speak at multiple events.
+
+4)Speaker
+
+Each speaker has a unique Speaker ID.
+
+A speaker may be linked to multiple events (many-to-many).
+
+5)Loan
+
+Each loan is uniquely identified by Loan ID.
+
+A loan must be taken by one customer only.
+
+Fine amount is applied only when the return date is later than the due date.
 
 ---
 
