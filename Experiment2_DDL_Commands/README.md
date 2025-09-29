@@ -105,123 +105,200 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
 
 ```sql
--- Paste your SQL code below for Question 1
+create table jobs(
+job_id int,
+job_title default(null),
+min_salary default(8000),
+max_salary default(null)
+)
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1068" height="193" alt="Screenshot 2025-09-29 132042" src="https://github.com/user-attachments/assets/79192b39-b7bb-4ac8-bce9-1e3d19828791" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
 
 ```sql
--- Paste your SQL code below for Question 2
+alter table employee add column department_id INTEGER;
+alter table employee add column manager_id INTEGER default(NULL);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1256" height="290" alt="Screenshot 2025-09-29 132243" src="https://github.com/user-attachments/assets/f9c02d3b-d780-4d87-a800-410bbbc8e838" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named Products with the following constraints:
+ProductID as INTEGER should be the primary key.
+ProductName as TEXT should be unique and not NULL.
+Price as REAL should be greater than 0.
+StockQuantity as INTEGER should be non-negative.
 
 ```sql
--- Paste your SQL code below for Question 3
+create table Products(
+ProductID INTEGER primary key,
+ProductName TEXT UNIQUE not null,
+Price REAL CHECK(Price>0),
+StockQuantity INTEGER CHECK(StockQuantity>=0)
+)
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1206" height="354" alt="Screenshot 2025-09-29 132443" src="https://github.com/user-attachments/assets/b96c6af6-0ef3-4284-ac4d-fc025ad803c2" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+Create a table named Employees with the following constraints:
+
+EmployeeID should be the primary key.
+FirstName and LastName should be NOT NULL.
+Email should be unique.
+Salary should be greater than 0.
+DepartmentID should be a foreign key referencing the Departments table.
 
 ```sql
--- Paste your SQL code below for Question 4
+create table Employees(
+EmployeeID int primary key,
+FirstName varchar(100) not null,
+LastName varchar(100) not null,
+Email text unique,
+Salary real CHECK(Salary>0),
+DepartmentID int,
+foreign key(DepartmentID) references Departments(DepartmentID)
+)
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1292" height="374" alt="Screenshot 2025-09-29 132655" src="https://github.com/user-attachments/assets/7aa980aa-b28f-468b-9aed-ce4f43eb6f7a" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Insert the below data into the Books table, allowing the Publisher and Year columns to take their default values.
+
+ISBN             Title                 Author
+---------------  --------------------  ---------------
+
+978-6655443321   Big Data Analytics    Karen Adams
+
+Note: The Publisher and Year columns will use their default values.
 
 ```sql
--- Paste your SQL code below for Question 5
+insert into Books(ISBN,Title,Author) values("978-6655443321","Big Data Analytics","Karen Adams");
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1247" height="349" alt="Screenshot 2025-09-29 132851" src="https://github.com/user-attachments/assets/524b598f-a259-44e1-b08e-893801c7f759" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL Query  to add attribute ISBN as varchar(30) and domain_dept as varchar(30) in the table 'books'
 
 ```sql
--- Paste your SQL code below for Question 6
+alter table books add column ISBN varchar(30);
+alter table books add column domain_dept varchar(30);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1287" height="375" alt="Screenshot 2025-09-29 133015" src="https://github.com/user-attachments/assets/f90bb6b5-e86e-497a-9c93-a0797ec56f69" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert all employees from Former_employees into Employee
 
+Table attributes are EmployeeID, Name, Department, Salary
 ```sql
--- Paste your SQL code below for Question 7
+insert into Employee(EmployeeID,Name,Department,Salary)
+select EmployeeID,Name,Department,Salary from Former_employees;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1213" height="353" alt="Screenshot 2025-09-29 133132" src="https://github.com/user-attachments/assets/8be2ce4a-7236-47b1-9cdc-267398c55a56" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+In the Products table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
 
+ProductID   Name              Category    Price       Stock
+----------  ---------------   ----------  ----------  ----------
+106         Fitness Tracker   Wearables
+
+107         Laptop            Electronics  999.99      50
+
+108         Wireless Earbuds  Accessories              100
+ 
 ```sql
--- Paste your SQL code below for Question 8
+insert into Products(ProductID,Name,Category) values(106,"Fitness Tracker","Wearables");
+insert into Products(ProductID,Name,Category,Price,Stock) values(107,"Laptop","Electronic",999.99,50);
+insert into Products(ProductID,Name,Category,Stock) values(108,"Wireless Earbud","Accessorie",100);
 ```
 
 **Output:**
 
-![Output8](output.png)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a table named Customers with the following columns:
+
+CustomerID as INTEGER
+Name as TEXT
+Email as TEXT
+JoinDate as DATETIME
 
 ```sql
--- Paste your SQL code below for Question 9
+create table Customers(
+CustomerID INTEGER,
+Name TEXT,
+Email TEXT,
+JoinDate DATETIME
+)
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1297" height="345" alt="Screenshot 2025-09-29 133410" src="https://github.com/user-attachments/assets/c97d68e1-1577-4798-a642-01256bb30b59" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named Shipments with the following constraints:
+ShipmentID as INTEGER should be the primary key.
+ShipmentDate as DATE.
+SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 ```sql
--- Paste your SQL code below for Question 10
+create table Shipments(
+ShipmentID INTEGER PRIMARY KEY,
+ShipmentDate DATE,
+SupplierID INTEGER,
+OrderID INTEGER,
+FOREIGN KEY(SupplierID) REFERENCES Suppliers(SupplierID),
+FOREIGN KEY(OrderID) REFERENCES Orders(OrderID)
+)
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1243" height="275" alt="Screenshot 2025-09-29 133547" src="https://github.com/user-attachments/assets/56e02bb1-ee39-4eb0-8031-67382b82b00c" />
+
 
 
 ## RESULT
