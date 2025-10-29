@@ -509,6 +509,9 @@ where grade=(select max(grade) from GRADES where subject=g.subject);
 
 <img width="728" height="489" alt="Screenshot 2025-10-29 102732" src="https://github.com/user-attachments/assets/ac034dda-1c7d-4a2d-9dfd-1d10573ee3d0" />
 
+**SEB Grade-Module 4**
+
+<img width="1140" height="81" alt="Screenshot 2025-10-29 103951" src="https://github.com/user-attachments/assets/3f524387-35b3-48af-9458-70f5e9d4d306" />
 
 
 ## RESULT
